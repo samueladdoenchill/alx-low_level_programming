@@ -19,4 +19,5 @@ int main(void)
 		putchar(b16digits[i]);
 	}
 
-	
+	return (0);
+}	
