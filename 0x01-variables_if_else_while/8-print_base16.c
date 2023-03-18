@@ -1,23 +1,22 @@
 #include <stdio.h>
-#include <string.h>
-/**
- * main - entry point
- * Description: This program uses putchar to
- * print all the digits of the hexadecimal
- * system
- *
- * Return: Always returns 0 (success)
- */
 
+/**
+ * main - Prints all the numbers of base 16 in lowercase.
+ *
+ * Return: Always 0.
+ */
 int main(void)
 {
-	char b16digits[] = "0123456789abcdef\n";
-	size_t i;
+	int num;
+	char letter;
 
-	for (i = 0; i < strlen(b16digits); i++)
-	{
-		putchar(b16digits[i]);
-	}
+	for (num = 0; num < 10; num++)
+		putchar((num % 10) + '0');
+
+	for (letter = 'a'; letter <= 'f'; letter++)
+		putchar(letter);
+
+	putchar('\n');
 
 	return (0);
 }	
