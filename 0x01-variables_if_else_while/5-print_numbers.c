@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 /**
+ * main - entry point
  * Description: This program uses putchar to
  * print all the digits of the decimal
  * system
