@@ -1,40 +1,26 @@
 #include "main.h"
 
 /**
- * _strncat - imitates the strncat of the standard library
- * @dest: first string input
- * @src: string to add to first string input
- * @n: number of bytes of string in second string to add to first string
+ * _strncat - concatenates two strings
  *
- * Return: returns the concatenated string
+ * @src: The source of strings
+ * @dest: The destination of the string
+ * @n: The length of int
+ *
+ * Return: pointer to the resulting string dest
  */
-
 char *_strncat(char *dest, char *src, int n)
 {
-	char *v;
-	int count;
-	int l;
+	int i, j;
 
-
-	l = (int) strlen(src);
-	v = dest;
-
-	while (*v != '\0')
+	for (i = 0; dest[i] != '\0'; i++)
 	{
-		v++;
+		continue;
 	}
-
-	count = 0;
-
-	while (count < n && *src != '\0')
+	for (j = 0; src[j] != '\0' && j < n; j++)
 	{
-		*v++ = *src++;
-		count++;
+		dest[i + j] = src[j];
 	}
-
-	if (l < n)
-	{
-		*v++ = '\0';
-	}
+	dest[i + j] = '\0';
 	return (dest);
 }

@@ -1,36 +1,20 @@
 #include "main.h"
-
 /**
- * string_toupper - converts letters in a string to uppercase
- * @v: input string
- * Return: returns the converted string
+ * string_toupper - change lowercase to uppercase
+ * @s:string
+ * Return:char
  */
-
-char *string_toupper(char *v)
+char *string_toupper(char *s)
 {
-	char *u;
-	size_t i;
 
-	u = malloc(strlen(v));
-	i = 0;
+	int i;
 
-	while (i < strlen(v))
+i = 0;
+	while (*(s + i))
 	{
-		if (v[i] >= 'a' && v[i] <= 'z')
-		{
-			u[i] = toupper(v[i]);
-		}
-		else
-		{
-			u[i] = v[i];
-		}
+		if (*(s + i) >= 'a' && *(s + i) <= 'z')
+			*(s + i) -= 'a' - 'A';
 		i++;
 	}
-
-	for (i = 0; i < strlen(v); i++)
-	{
-		v[i] = u[i];
-	}
-
-	return (v);
+	return (s);
 }
