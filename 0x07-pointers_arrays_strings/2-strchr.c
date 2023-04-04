@@ -9,28 +9,19 @@
  *
  * Return: a pointer to the first occurrence of char c in s else NULL
  */
-
 char *_strchr(char *s, char c)
 {
-	unsigned int i;
-	char *v;
-
-	i = 0;
-	while (i < strlen(s))
-	{
-		if (s[i] == c)
-		{
-			break;
-		}
-		i++;
-	}
-	if (i == strlen(s))
-	{
-		v = 0;
-	}
-	else
-	{
-		v = &(s[i]);
-	}
-	return (v);
+while (*s != '\0')
+{
+if (*s == c)
+{
+return (s);
+}
+s++;
+}
+if (c == '\0')
+{
+return (s);
+}
+return (NULL);
 }
