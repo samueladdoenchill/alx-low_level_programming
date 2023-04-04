@@ -1,31 +1,36 @@
+#include <stdio.h>
 #include "main.h"
+#include <string.h>
 
 /**
-* _strchr -  A function that returns a
-* string that contains the first occurrence
-* of a character in another string
-* @s: parameter of type char* .
-* @c: parameter of type char .
-* Return: char* .
-*/
+ * _strchr - lets you know the first occurance of c in the string s
+ * @s: the string in which to check for c
+ * @c: the character to check for in s
+ *
+ * Return: a pointer to the first occurrence of char c in s else NULL
+ */
+
 char *_strchr(char *s, char c)
 {
-	int index;
+	unsigned int i;
+	char *v;
 
-	for (index = 0; s[index] != '\0'; index++)
+	i = 0;
+	while (i < strlen(s))
 	{
-		if (s[index] == c)
+		if (s[i] == c)
 		{
 			break;
 		}
+		i++;
 	}
-	if (s[index] == c)
+	if (i == strlen(s))
 	{
-		s += index;
+		v = 0;
 	}
 	else
 	{
-		return (NULL);
+		v = &(s[i]);
 	}
-	return (s);
+	return (v);
 }
