@@ -1,11 +1,10 @@
 
 /**
  * _strpbrk - Searches a string for any of a set of bytes.
- * @s: The string to be searched.
- * @accept: The set of bytes to be searched for.
+ * @s: The string.
+ * @accept: The set of byte.
  *
- * Return: If a set is matched - a pointer to the matched byte.
- * If no set is matched - NULL.
+ * Return: ia pointer to matched byte if set is found, otherwise NULL.
  */
 char *_strpbrk(char *s, char *accept)
 {
