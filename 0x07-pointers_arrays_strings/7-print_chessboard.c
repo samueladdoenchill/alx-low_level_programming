@@ -2,10 +2,10 @@
 /**
  * print_chessboard - prints a chessboard
  *
- * @board: A pointer to the pieces to be printed.
+ * @a: A pointer to the pieces to be printed.
  * Return: void
  **/
-void print_chessboard(char (*board)[8])
+void print_chessboard(char (*a)[8])
 {
 int i, j;
 i = 0;
