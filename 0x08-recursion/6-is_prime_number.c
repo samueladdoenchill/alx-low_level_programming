@@ -13,7 +13,7 @@ return (1);
 else if (b == a / 2)
 return (0);
 else
-return (div(a+1, b));
+return (div(a + 1, b));
 }
 
 /**
