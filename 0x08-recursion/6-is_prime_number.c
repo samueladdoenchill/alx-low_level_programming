@@ -8,7 +8,7 @@
  */
 int div(int a, int b)
 {
-if (b == a / 2)
+if (!(b >= 2 && b % a != 0))
 return (0);
 else if (a > b / 2)
 return (1);
