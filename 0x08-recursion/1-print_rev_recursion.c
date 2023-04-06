@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 /**
  * _print_rev_recursion - The function outputs a string in reverse order.
  * @s:The string that will be printed.
