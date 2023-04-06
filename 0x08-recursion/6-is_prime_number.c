@@ -8,10 +8,10 @@
  */
 int div(int a, int b)
 {
-if (a > b / 2)
-return (1);
-else if (b == a / 2)
+if (b == a / 2)
 return (0);
+else if (a > b / 2)
+return (1);
 else
 return (div(a + 1, b));
 }
