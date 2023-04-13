@@ -1,7 +1,6 @@
 #include <stdlib.h>
 
 /**
- *
  * alloc_grid - Creates a 2D array of integers
  * @width: Width of the matrix
  * @height: Height of the matrix
@@ -15,7 +14,7 @@ int **matrix;
 int i, j;
 
 if (width <= 0 || height <= 0)
-return NULL;
+return (NULL);
 matrix = malloc(sizeof(int *) * height);
 if (matrix == NULL)
 return (NULL);
@@ -36,5 +35,5 @@ for (i = 0; i < height; i++)
 for (j = 0; j < width; j++)
 matrix[i][j] = 0;
 
-return matrix;
+return (matrix);
 }
