@@ -1,59 +1,53 @@
-#include <stdlib.h>
 #include "main.h"
 
 /**
  * _realloc - reallocates a memory block using malloc and free
- * @ptr: pointer to the memory previously allocated by malloc
- * @old_size: size of the allocated memory for ptr
- * @new_size: new size of the new memory block
  *
- * Return: pointer to the newly allocated memory block, or NULL if failed
+ * @ptr: pointer to the memory previously allocated
+ * @old_size: is the size, in bytes, of the allocated space for ptr
+ * @new_size: the new size, in bytes of the new memory block
+ *
+ * Return: pointer to the newly allocated memory block, or NULL
  */
+
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-/* declare pointers for old and new memory blocks */
-char *old_block, *new_block;
-unsigned int i;
+char *new_ptr, *old_ptr;
+unsigned int i, min_size;
 
-/* if new size is the same as old size, just return the original pointer */
-if (new_size == old_size)
+/* If ptr is NULL, equivalent to malloc(new_size) */
+if (ptr == NULL)
+{
+new_ptr = malloc(new_size);
+return (new_ptr);
+}
+/* If new_size is 0 and ptr is not NULL, equivalent to free(ptr) */
+else if (new_size == 0)
+{
+free(ptr);
+return (NULL);
+}
+
+/* If new_size and old_size are the same, do nothing and return ptr */
+else if (new_size == old_size)
 {
 return (ptr);
 }
 
-/* if new size is 0 and pointer is not NULL, free memory and return NULL */
-if (new_size == 0 && ptr != NULL)
+/* Allocate new memory block and copy contents of old block to new block */
+else
 {
-free(ptr);
+new_ptr = malloc(new_size);
+if (new_ptr == NULL)
 return (NULL);
-}
 
-/* if pointer is NULL, allocate new memory and return new pointer */
-if (ptr == NULL)
-{
-new_block = malloc(new_size);
-return (new_block);
-}
+old_ptr = ptr;
+min_size = old_size < new_size ? old_size : new_size;
+for (i = 0; i < min_size; i++)
+new_ptr[i] = old_ptr[i];
 
-/* allocate memory for the new block */
-new_block = malloc(new_size);
-if (new_block == NULL)
-{
-return (NULL);
-}
-
-/* cast pointers to char pointers for byte-by-byte copying */
-old_block = ptr;
-
-/* copy old block to new block, up to minimum of old and new sizes */
-for (i = 0; i < old_size && i < new_size; i++)
-{
-new_block[i] = old_block[i];
-}
-
-/* free the old memory block */
+/* Free old memory block and return pointer to new block */
 free(ptr);
-
-/* return the new memory block */
-return (new_block);
+return (new_ptr);
+}
 }
