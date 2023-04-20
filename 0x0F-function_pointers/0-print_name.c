@@ -11,18 +11,7 @@
 void print_name(char *name, void (*f)(char *))
 {
 /* Check if pointer to function is not NULL */
-if (!f)
-{
-printf("Error: Printing function is NULL\n");
-return;
-}
-
-/* Check if name is not NULL */
-if (!name)
-{
-printf("Error: Name is NULL\n");
-return;
-}
+if (name != NULL && f != NULL)
 
 /* Call the printing function with the given name */
 f(name);
