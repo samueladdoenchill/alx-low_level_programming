@@ -27,6 +27,5 @@ return (ops[i].f);
 i++;
 }
 
-fprintf(stderr, "Error: Operator '%s' not supported\n", s);
-exit(99);
+return (NULL);
 }
