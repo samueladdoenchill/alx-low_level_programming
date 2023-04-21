@@ -28,8 +28,8 @@ void print_all(const char * const format, ...)
 				break;
 			case 's': /* string argument */
 				string_ptr = va_arg(arguments, char *);
-				if (string_ptr == NULL)
-					string_ptr = "(nil)"; /* handle null pointer */
+				if (!string_ptr)
+					string_ptr = "(nil)";
 				printf("%s%s", separator_ptr, string_ptr);
 				break;
 			default: /* unrecognized type */
