@@ -1,42 +1,44 @@
 #include "variadic_functions.h"
 
 /**
- * print_all - Prints all of the arguments when specified
- * @format: specifies the necessary operations
- * Return: void
+ * print_all - prints anything
+ * @format: list of types of arguments passed to the function
  */
 void print_all(const char * const format, ...)
 {
-va_list a_list;
-const char *p;
-char *str;
-int first_arg = 1;
 
-va_start(a_list, format);
+char *string_ptr, *separator_ptr = "";
+va_list arguments;
+const char *p = format;
 
-for (p = format; p && *p; p++)
+va_start(arguments, format);
+
+while (p && *p)
 {
 switch (*p)
 {
 case 'c':
-printf("%s%c", first_arg ? "" : ", ", va_arg(a_list, int));
-break;
+	printf("%s%c", separator_ptr, va_arg(arguments, int));
+	break;
 case 'i':
-printf("%s%i", first_arg ? "" : ", ", va_arg(a_list, int));
-break;
+	printf("%s%d", separator_ptr, va_arg(arguments, int));
+	break;
 case 'f':
-printf("%s%f", first_arg ? "" : ", ", va_arg(a_list, double));
-break;
+	printf("%s%f", separator_ptr, va_arg(arguments, double));
+	break;
 case 's':
-str = va_arg(a_list, char *);
-printf("%s%s", first_arg ? "" : ", ", str ? str : "(nil)");
-break;
+	string_ptr = va_arg(arguments, char *);
+	if (!string_ptr)
+		string_ptr = "(nil)";
+	printf("%s%s", separator_ptr, string_ptr);
+	break;
 default:
-break;
+	p++;
+	continue;
 }
-first_arg = 0;
+separator_ptr = ", ";
+p++;
 }
-
 printf("\n");
-va_end(a_list);
+va_end(arguments);
 }
