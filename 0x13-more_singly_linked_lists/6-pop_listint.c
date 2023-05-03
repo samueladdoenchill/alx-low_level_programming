@@ -10,7 +10,7 @@ int pop_listint(listint_t **head)
 {
 	/* Declare a pointer to the node to be deleted and the value to be returned */
 	listint_t *node_to_delete;
-	int return_value;
+	int value;
 
 	/* Check if the list is empty */
 	if (*head == NULL)
@@ -18,8 +18,9 @@ int pop_listint(listint_t **head)
 		return (0);
 	}
 
+	/* Set the pointer to the node to be deleted and the value to be returned */
 	node_to_delete = *head;
-	value = (node_to_delete->n);
+	value = node_to_delete->n;
 
 	/* Set the head pointer to the next node */
 	*head = (*head)->next;
