@@ -1,7 +1,3 @@
-/*
- * main.h files
- */
-
 #ifndef MAINH
 #define MAINH
 
