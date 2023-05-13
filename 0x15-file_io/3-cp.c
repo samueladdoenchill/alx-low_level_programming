@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 	/* Check if the argument number is okay */
 	if (argc != 3)
 	{
-		dprintf(STDERR_FILENO, "Usage: %s file_from file_to\n", argv[0]);
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 	/* Open the source file in read-only mode */
