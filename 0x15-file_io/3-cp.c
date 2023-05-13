@@ -1,6 +1,6 @@
 #include "main.h"
 
-#define BUFFER_SIZE 2048
+#define BUFFER_SIZE 1024
 
 /**
  * file_closure - closes a given file descriptor
