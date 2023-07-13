@@ -1,40 +1,30 @@
 #include "main.h"
 #include <stdlib.h>
 
-/* 
- * readTextFile - Reads a text file and prints its content to STDOUT.
- * @fileName: The name of the text file to be read.
- * @numLetters: The maximum number of letters to be read.
- * 
+/**
+ * read_textfile - Read a text file and print its contents to STDOUT.
+ * @filename: The name of the text file being read.
+ * @max_letters: The maximum number of letters to be read.
+ *
  * Return: The actual number of bytes read and printed.
- *         Returns 0 when the function fails or the filename is NULL.
+ *         Returns 0 when the function fails or filename is NULL.
  */
-ssize_t readTextFile(const char *fileName, size_t numLetters)
+ssize_t read_textfile(const char *filename, size_t max_letters)
 {
 	char *buffer;
-	ssize_t fileDescriptor;
-	ssize_t bytesWritten;
-	ssize_t bytesRead;
+	ssize_t file_descriptor;
+	ssize_t bytes_written;
+	ssize_t bytes_read;
 
-	/* Open the file in read-only mode */
-	fileDescriptor = open(fileName, O_RDONLY);
-	if (fileDescriptor == -1)
+	file_descriptor = open(filename, O_RDONLY);
+	if (file_descriptor == -1)
 		return (0);
+	buffer = malloc(sizeof(char) * max_letters);
+	bytes_read = read(file_descriptor, buffer, max_letters);
+	bytes_written = write(STDOUT_FILENO, buffer, bytes_read);
 
-	/* Allocate memory for the buffer */
-	buffer = malloc(sizeof(char) * numLetters);
-
-	/* Read data from the file into the buffer */
-	bytesRead = read(fileDescriptor, buffer, numLetters);
-
-	/* Write the data from the buffer to STDOUT */
-	bytesWritten = write(STDOUT_FILENO, buffer, bytesRead);
-
-	/* Free the allocated memory and close the file */
 	free(buffer);
-	close(fileDescriptor);
-
-	/* Return the number of bytes written to STDOUT */
-	return (bytesWritten);
+	close(file_descriptor);
+	return (bytes_written);
 }
 
